@@ -26,7 +26,6 @@ git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:13523010484/test.git master:gh-pages
-git push -f git@github.com:13523010484/test.git master:gh-pages
-
+git subtree push --prefix dist origin gh-pages
 
 cd -
