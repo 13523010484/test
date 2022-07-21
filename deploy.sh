@@ -6,6 +6,7 @@ set -e
 # 构建
 npm run build
 
+# 将源代码及构建代码提交值main分支
 git add .
 git commit -m "main提交"
 git push origin main
@@ -24,6 +25,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:13523010484/test.git master:gh-pages
+# git push -f git@github.com:13523010484/test.git master:gh-pages
+git push -f origin/gh-pages
 
 cd -
