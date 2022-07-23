@@ -19,7 +19,7 @@ cd dist
 # echo 'www.example.com' > CNAME
 
 # git init
-git init -b main
+git init
 git add -A
 git commit -m 'deploy'
 
