@@ -18,7 +18,8 @@ cd dist
 # 部署到自定义域域名
 # echo 'www.example.com' > CNAME
 
-git init
+# git init
+git init -b main
 git add -A
 git commit -m 'deploy'
 
