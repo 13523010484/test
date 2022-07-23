@@ -31,7 +31,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: run script
-        run: |
-          npm install,
-          npm run build,
-          echo test, and deploy your project.
+        run: npm help
