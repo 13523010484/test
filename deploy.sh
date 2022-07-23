@@ -20,6 +20,8 @@ cd dist
 
 # git init
 git init
+git config --global user.email '2286592704@qq.com'
+git config --global user.name 'jiaqh'
 git add -A
 git commit -m 'deploy'
 
