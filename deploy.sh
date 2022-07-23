@@ -7,9 +7,9 @@ set -e
 npm run build
 
 # 将源代码及构建代码提交值main分支
-git add .
-git commit -m "main提交"
-git push origin main
+# git add .
+# git commit -m "main提交"
+# git push origin main
 
 # cd 到构建输出的目录下
 cd dist
