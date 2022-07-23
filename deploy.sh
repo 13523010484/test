@@ -4,6 +4,7 @@
 set -e
 
 # 构建
+npm install
 npm run build
 
 # 将源代码及构建代码提交值main分支
