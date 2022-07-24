@@ -22,20 +22,23 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
       # Runs a set of commands using the runners shell
-      - name: build
-        run: | 
-            npm install
-            npm run build
-
-      - name: push
+      - name: Build
+      	# 安装 Node 之后就可以执行构建脚本
         run: |
-            cd dist
-            git init -b mian
-            git add -A
-            git commit -m '提交'
-            git push -f git@github.com:13523010484/test.git main:gh-pages
+          npm install yarn -g
+          yarn
+          yarn build
+      - name: Deploy
+      	# 将构建产物 commit 到一个分支上，用于发布静态站点资源
+      	# https://github.com/13523010484/test
+        uses: 13523010484/test
+        with:
+          # Github 会在 workflow 中自动生成 GIHUBT_TOKEN，用于认证 workflow 的运行
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 静态资源目录设置
+          publish_dir: ./dist
+          # 默认发布到 gh-pages 分支上，可以指定特定的发布分支（不能选拉取代码的分支）
+          publish_branch: gh-pages
+          full_commit_message: ${{ github.event.head_commit.message }}
 
