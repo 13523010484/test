@@ -23,12 +23,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a set of commands using the runners shell
-      - name: Build
+      - name: build
       	# 安装 Node 之后就可以执行构建脚本
         run: |
           npm install yarn -g
           yarn
           yarn build
+          
       - name: Deploy
       	# 将构建产物 commit 到一个分支上，用于发布静态站点资源
       	# https://github.com/13523010484/test
