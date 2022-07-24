@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>哈哈哈2022-07-24 10:07</p>
+    <p>当前日期::{{ new Date().toLocaleString() }}</p>
   </div>
 </template>
 

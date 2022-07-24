@@ -31,5 +31,9 @@ jobs:
             yarn
             yarn run build
       
-      - name: test
-        run: ${{ secrets.GITHUB_TOKEN }}
+      - name: deploy
+        uses: 13523010484/test
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
