@@ -4,7 +4,7 @@
 set -e
 
 # 构建
-npm install
+# npm install
 npm run build
 
 # 将源代码及构建代码提交值main分支
@@ -18,10 +18,8 @@ cd dist
 # 部署到自定义域域名
 # echo 'www.example.com' > CNAME
 
-# git init
-git init
-git config --global user.email '2286592704@qq.com'
-git config --global user.name 'jiaqh'
+# git init && git init的默认分支master改为main
+git init -b main
 git add -A
 git commit -m 'deploy'
 
@@ -29,6 +27,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:13523010484/test.git master:gh-pages
+git push -f git@github.com:13523010484/test.git main:gh-pages
 
 cd -
