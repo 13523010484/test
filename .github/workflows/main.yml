@@ -30,3 +30,11 @@ jobs:
         run: | 
             yarn
             yarn run build
+
+      - name: deploy
+        uses: 13523010484/test
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          full_commit_message: ${{ github.event.head_commit.message }}
