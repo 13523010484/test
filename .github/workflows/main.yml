@@ -34,6 +34,11 @@ jobs:
       - name: deploy
         uses: 13523010484/test
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          server: ${{ secrets.FTP_HOST }}  
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           publish_dir: ./dist
           publish_branch: gh-pages
+
+      - name: 完成
+        run: echo deploy by ftp
