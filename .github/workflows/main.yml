@@ -31,3 +31,11 @@ jobs:
             npm install
             npm run build
 
+      - name: push
+        run: |
+            cd dist
+            git init -b mian
+            git add -A
+            git commit -m '提交'
+            git push -f git@github.com:13523010484/test.git main:gh-pages
+
