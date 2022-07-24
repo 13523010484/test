@@ -32,4 +32,4 @@ jobs:
             yarn run build
       
       - name: test
-        run: ${{ secrets }}
+        run: ${{ secrets.GITHUB_TOKEN }}
