@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Clean install dependencies and build
+      - name: install && build
         run: |
-          npm ci
+          npm install
           npm run build
