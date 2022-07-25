@@ -1,29 +1,38 @@
-# 工作流名称，不设置的话默认取配置文件名
-name: Build and Deploy
-# 指定触发 workflow 的条件
-# 指定触发事件时，可以限定分支或标签
-# 当前是 只有 main分支上触发 push 事件时才执行工作流任务
-on: 
-  push:
-    branches:
-      - main
-# 工作流执行的一个或多个任务
-jobs:
-  # 任务名称
-  build-and-deploy:
-    # 任务运行的容器类型（虚拟机环境）
-    runs-on: ubuntu-latest
-    # 任务执行的步骤
-    steps:
-      # 步骤名称
-      - name: Checkout 🛎️
-        # 使用的操作 actions，可以使用公共仓库，本地仓库，别人的仓库的action
-        # 拉取代码
-        uses: actions/checkout@main
+# 该workflow的名称，可以随意填写
+name: Build And Deploy To Github Pages
 
-      - name: Build and Deploy
-        # 构建发布 Github pages
+# workflow的触发事件，这里代表main分支的push事件触发
+on:
+  push:
+    branches: [main]
+
+# 任务
+jobs:
+  # build-and-deploy 为任务的ID
+  build-and-deploy:
+    # 运行所需要的环境
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤名
+      - name: Checkout
+        # 使用的actions脚本，这里是官方提供的获取源码脚本
+        uses: actions/checkout@v2.3.1
+        # 这个为使用 JamesIves/github-pages-deploy-action脚本所需要的配置
+        with:
+          persist-credentials: false
+
+      # 执行npm脚本打包项目
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      # 执行JamesIves/github-pages-deploy-action将项目发布到Github Pages
+      - name: Deploy
+        #uses: JamesIves/github-pages-deploy-action@3.7.1
         uses: 13523010484/test
+<<<<<<< HEAD
         # 该步骤所需的环境变量
         env:
           ACCESS_TOKEN: ${{ secrets.jqh0484 }}
@@ -37,3 +46,12 @@ jobs:
           FOLDER: dist # The folder the action should deploy.
           # 在向 BRANCH 分支推送代码前，可以指定构建脚本
           BUILD_SCRIPT: npm install && npm run build # The build script the action should run prior to deploying.
+=======
+        with:
+          # 该workflow需要操作repo，因此需要一个密钥，下面会讲到如何获取这个密钥
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # 发布到的分支
+          BRANCH: gh-pages
+          # 要发布的文件夹
+          FOLDER: dist
+>>>>>>> 076862cb39cd99cf1a77010a5acb27201cdbddc3
